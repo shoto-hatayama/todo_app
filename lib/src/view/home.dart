@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
-class HomeWidget extends StatefulWidget{
+class HomeWidget extends StatefulWidget {
   const HomeWidget({Key? key}) : super(key: key);
 
   @override
   State<HomeWidget> createState() => _HomeWidgetState();
-
 }
-class _HomeWidgetState extends State<HomeWidget> {
 
-bool isChecked = false;
+class _HomeWidgetState extends State<HomeWidget> {
+  bool isChecked = false;
 
   void _handleCheckbox(value) {
     setState(() {

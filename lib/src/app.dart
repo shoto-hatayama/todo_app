@@ -56,11 +56,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: 'calendar',
             backgroundColor: Colors.lightBlue)
       ], onTap: _onItemTapped, currentIndex: _selectedIndex),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: FloatingActionButton(
+          onPressed: null, //後程具体的な処理を実装
+          tooltip: 'Increment',
+          child: const Icon(Icons.add),
+          backgroundColor: Colors
+              .greenAccent), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
