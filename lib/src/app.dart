@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'view/home.dart';
+import 'view/calendar.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -25,7 +26,6 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-
   int _selectedIndex = 0;
 
   void _onItemTapped(int value) {
@@ -34,12 +34,17 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     });
   }
 
+  static const bodyWidget = [
+    HomeWidget(),
+    CalendarWidget(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:const HomeWidget(),
+      body: bodyWidget[_selectedIndex],
       bottomNavigationBar:
-      BottomNavigationBar(items: const <BottomNavigationBarItem>[
+          BottomNavigationBar(items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
             icon: Icon(Icons.task_alt),
             activeIcon: Icon(Icons.task_alt),
