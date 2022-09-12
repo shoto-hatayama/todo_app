@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.lightBlue,
       ),
       home: const MyStatefulWidget(),
     );
@@ -42,26 +42,75 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: bodyWidget[_selectedIndex],
-      bottomNavigationBar:
-          BottomNavigationBar(items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-            icon: Icon(Icons.task_alt),
-            activeIcon: Icon(Icons.task_alt),
-            label: 'task',
-            backgroundColor: Color.fromARGB(175, 72, 76, 77)),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            activeIcon: Icon(Icons.calendar_month),
-            label: 'calendar',
-            backgroundColor: Colors.lightBlue)
-      ], onTap: _onItemTapped, currentIndex: _selectedIndex),
-      floatingActionButton: FloatingActionButton(
-          onPressed: null, //後程具体的な処理を実装
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
-          backgroundColor: Colors
-              .greenAccent), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        body: bodyWidget[_selectedIndex],
+        bottomNavigationBar:
+            BottomNavigationBar(items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(Icons.task_alt),
+              activeIcon: Icon(Icons.task_alt),
+              label: 'task',
+              backgroundColor: Color.fromARGB(175, 72, 76, 77)),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_month),
+              activeIcon: Icon(Icons.calendar_month),
+              label: 'calendar',
+              backgroundColor: Colors.lightBlue)
+        ], onTap: _onItemTapped, currentIndex: _selectedIndex),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            showDialog<void>(
+                context: context,
+                builder: (BuildContext context) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      AlertDialog(
+                        insetPadding: EdgeInsets.zero,
+                        content: Column(children: <Widget>[
+                          // タスク入力フォーム
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            child: TextField(
+                                autofocus: true,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                ),
+                                controller: null,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: 'することは？',
+                                )),
+                          ),
+                          Row(children: <Widget>[
+                            // カレンダー表示
+                            IconButton(
+                                icon: Icon(Icons.date_range),
+                                onPressed: () {
+                                  // 処理
+                                }),
+                            // 詳細入力フォーム表示
+                            IconButton(
+                                icon: Icon(Icons.announcement),
+                                onPressed: () {
+                                  // 処理
+                                }),
+                            // 保存ボタン
+                            // 次のTextButtonを右寄せにするためのExpanded
+                            Expanded(child: SizedBox()),
+                            TextButton(
+                                onPressed: () {
+                                  // 処理
+                                },
+                                child: Text("追加"))
+                          ])
+                        ]),
+                      ),
+                    ],
+                  );
+                });
+          },
+        ));
   }
 }
