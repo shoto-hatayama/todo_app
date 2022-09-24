@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "todoapp-dev-187bf",
+    "dev": "todoapp-dev-187bf",
+    "prod": "todoapp-prod-e5ade"
+  },
+  "targets": {},
+  "etags": {}
+}
